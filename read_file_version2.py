@@ -12,10 +12,22 @@ def read_file(filename):
 def convert(lines):
     new_list = []
     person = None   #就是 NULL 的意思
+    allen_word_count = 0
+    viki_work_count = 0
     for line in lines:
         split_list = line.split(' ')  #字串用split功能, 遇到空白分割
-        print(split_list)
-    #print(new_list)
+        time = split_list[0]
+        name = split_list[1]
+        if name == 'Allen':
+            #print(split_list[2:])  # 取s[2]後面的資料
+            for msg in split_list[2:]:
+                allen_word_count += len(msg)
+        elif name == 'Viki':
+            #print(split_list[2:])
+            for msg in split_list[2:]:
+                viki_work_count += len(msg)
+    print('Allen 說了', allen_word_count, '個字')
+    print('Viki 說了', viki_work_count, '個字')
     return new_list
 
 def write_file(filename, new_lines):
